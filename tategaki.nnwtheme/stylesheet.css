@@ -471,6 +471,9 @@ article p:not(:first-of-type) {
 article blockquote {
   font-family: Dash, PcM, PcS, Charter, Kaai, cursive;
 }
+article blockquote .kana {
+  font-family: YuKyokasho, cursive;
+}
 article img {
   max-width: 25rem;
   max-height: 100%;

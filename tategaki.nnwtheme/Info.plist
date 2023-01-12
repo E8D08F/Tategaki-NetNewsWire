@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Version</key>
+	<integer>1</integer>
+	<key>CreatorName</key>
+	<string>Toto</string>
+	<key>CreatorHomePage</key>
+	<string>https://chunghwa.asia</string>
+	<key>Name</key>
+	<string>Tategaki</string>
+	<key>ThemeIdentifier</key>
+	<string>asia.chunghwa.nnwtheme</string>
+</dict>
+</plist>

@@ -1,23 +1,54 @@
 @use "sass:math"
 @import 'preflight'
+@import 'typography'
+@import 'tategaki'
 
-$fs: 24px
+$fs: 22px
 $lcct: 32
 $mplr: 1 + calc(2/3)
 
 $lgth: $lcct * 1rem
-$lmch: $mplr * 1rem
+$lmch: $mplr * 1rem  // FIXME: Some rules containing $lmch should change when window resized
 $lacs: (2 * $mplr - 1) * 1rem
 $lsid: ($mplr - 1) * 0.5rem
+
+:root
+  --background-colour: #f7f7f7
+  --foreground-colour: #03070F
+  --a-colour: #204BAA
+
+@media screen and (prefers-color-scheme: dark)
+  :root
+    --background-colour: #1b1b1b
+    --foreground-colour: #ccc
+    --a-colour: #4f9cf5
 
 html, body
   writing-mode: vertical-rl
   font-size: $fs
 
 body
-  font-family: Charter, 'PingFang TC', serif
-  font-feature-settings: 'vhal'
+  background-color: var(--background-colour)
+
+  color: var(--foreground-colour)
+  font-family: Dash, PcM, PcS, Palatino, Ming, serif
   line-height: $mplr
+
+main
+  position: fixed
+  top: 0
+  bottom: 0px
+  width: 100vw
+
+  overflow-x: auto
+  overscroll-behavior: none
+
+  mask: linear-gradient(to right, rgba(0,0,0,0.12), black 0.27rem) left, linear-gradient(to left, rgba(0,0,0,0.12), black 0.27rem) right
+  -webkit-mask-composite: source-in
+
+.latin
+  position: relative
+  left: 0.06rem
 
 article
   height: $lgth
@@ -27,16 +58,68 @@ article
 
   .heading
     margin-block-end: 3 * $lmch
-  
-  p:not(:first-child)
-    text-indent: 1rem
-  
 
+  h1, h2, h3
+    font-family: Hak, sans-serif
+    font-weight: bold
+
+  h2, h3
+    margin-block-start: $lmch
+  
+  p:not(:first-of-type)
+    text-indent: 1rem
+
+  blockquote
+    font-family: Dash, PcM, PcS, Charter, Kaai, cursive
+
+  img
+    max-width: 15 * $lmch
+    max-height: 100%
+
+  figure
+    margin: 0 $lmch
+
+  figcaption
+    opacity: 0.72
+
+  a
+    color: var(--a-colour)
+
+  em
+    font-style: normal
+    -webkit-text-emphasis: '\25AA'
+
+  em.latin, em .latin
+    font-style: italic
+    -webkit-text-emphasis: none
+
+  ul
+    list-style-type: disc
+
+  ul li::marker
+    color: var(--a-colour)
+
+  ol
+    list-style-type: trad-chinese-informal
+    list-style-position: inside
+
+  ol li
+    margin: 0
+    text-indent: 1rem
+    text-align: justify
+  
 // Style text frame
 @mixin text_frame($_lcct, $should_set_fs: false)
   @if $should_set_fs 
     html, body
       font-size: $fs
+
+    article
+      img
+        max-width: 15 * $mplr * $fs
+      
+      figure
+        margin: 0 $mplr * $fs
   article
     height: $_lcct * 1rem
 
@@ -67,5 +150,4 @@ $_last_breakpoint: null
     @include screen_breakpoints($ideal_lcct, $step, nth($sizes, $i))
     
 
-@include lgth_step_down($lcct, 18, $fs, 21px, 18px, 16px)
-
+@include lgth_step_down($lcct, 18, $fs, 20px, 18px, 16px, 14px)

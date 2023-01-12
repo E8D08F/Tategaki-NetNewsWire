@@ -1,0 +1,34 @@
+.latin
+  -webkit-hyphens: auto
+  -webkit-hyphenate-limit-before: 3
+  -webkit-hyphenate-limit-after: 2
+  hyphenate-limit-chars: 6 3 2
+
+.kana
+  font-feature-settings: "vpal"
+
+.tcy
+  -webkit-text-combine: horizontal
+  position: static !important
+
+.full-width
+  font-feature-settings: "fwid"
+  text-transform: full-width
+
+.imitate-pcs .squeeze-out
+  letter-spacing: -0.5rem
+
+.imitate-pcs .squeeze-in
+  margin-inline-start: -0.5rem
+
+.squeeze-in + .squeeze-in-space,
+.squeeze-other-punc + .squeeze-in-space,
+.squeeze-out-space
+  display: none
+
+.squeeze-out-space:last-child
+  display: inline
+
+.squeeze-out-space::before, .squeeze-in-space::before
+  content: "\0020"
+  font: 0.833em Courier

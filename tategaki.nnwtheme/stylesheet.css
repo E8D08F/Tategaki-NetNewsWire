@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
@@ -337,15 +338,116 @@ video {
   display: none;
 }
 
+@font-face {
+  font-family: Dash;
+  src: local("LiSong Pro");
+  unicode-range: U+2014, U+2015;
+}
+@font-face {
+  font-family: PcM;
+  src: local("Apple LiSung");
+  unicode-range: U+203c, U+2047-2049, U+3001, U+3002, U+ff01, U+ff0c, U+ff1a, U+ff1b, U+ff1f, U+30FB;
+}
+@font-face {
+  font-family: PcS;
+  src: local("Hiragino Mincho ProN");
+  unicode-range: U+301d, U+301f, U+3008-3011, U+3014-301B, U+ff08, U+ff09;
+}
+@font-face {
+  font-family: Ming;
+  src: local("Hiragino Mincho ProN");
+}
+@font-face {
+  font-family: Hak;
+  src: local("PingFang TC");
+}
+@font-face {
+  font-family: Kaai;
+  src: local("Kaiti TC"), local("Kaiti SC");
+}
+.latin {
+  -webkit-hyphens: auto;
+  -webkit-hyphenate-limit-before: 3;
+  -webkit-hyphenate-limit-after: 2;
+  hyphenate-limit-chars: 6 3 2;
+}
+
+.kana {
+  font-feature-settings: "vpal";
+}
+
+.tcy {
+  -webkit-text-combine: horizontal;
+  position: static !important;
+}
+
+.full-width {
+  font-feature-settings: "fwid";
+  text-transform: full-width;
+}
+
+.imitate-pcs .squeeze-out {
+  letter-spacing: -0.5rem;
+}
+
+.imitate-pcs .squeeze-in {
+  margin-inline-start: -0.5rem;
+}
+
+.squeeze-in + .squeeze-in-space,
+.squeeze-other-punc + .squeeze-in-space,
+.squeeze-out-space {
+  display: none;
+}
+
+.squeeze-out-space:last-child {
+  display: inline;
+}
+
+.squeeze-out-space::before, .squeeze-in-space::before {
+  content: " ";
+  font: 0.833em Courier;
+}
+
+:root {
+  --background-colour: #f7f7f7;
+  --foreground-colour: #03070F;
+  --a-colour: #204BAA;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    --background-colour: #1b1b1b;
+    --foreground-colour: #ccc;
+    --a-colour: #4f9cf5;
+  }
+}
 html, body {
   writing-mode: vertical-rl;
-  font-size: 24px;
+  font-size: 22px;
 }
 
 body {
-  font-family: Charter, "PingFang TC", serif;
-  font-feature-settings: "vhal";
+  background-color: var(--background-colour);
+  color: var(--foreground-colour);
+  font-family: Dash, PcM, PcS, Palatino, Ming, serif;
   line-height: 1.6666666667;
+}
+
+main {
+  position: fixed;
+  top: 0;
+  bottom: 0px;
+  width: 100vw;
+  overflow-x: auto;
+  overscroll-behavior: none;
+  mask: linear-gradient(to right, rgba(0, 0, 0, 0.12), black 0.27rem) left, linear-gradient(to left, rgba(0, 0, 0, 0.12), black 0.27rem) right;
+  -webkit-mask-composite: source-in;
+}
+
+.latin {
+  position: relative;
+  left: 0.06rem;
 }
 
 article {
@@ -356,61 +458,104 @@ article {
 article .heading {
   margin-block-end: 5rem;
 }
-article p:not(:first-child) {
+article h1, article h2, article h3 {
+  font-family: Hak, sans-serif;
+  font-weight: bold;
+}
+article h2, article h3 {
+  margin-block-start: 1.6666666667rem;
+}
+article p:not(:first-of-type) {
   text-indent: 1rem;
 }
+article blockquote {
+  font-family: Dash, PcM, PcS, Charter, Kaai, cursive;
+}
+article img {
+  max-width: 25rem;
+  max-height: 100%;
+}
+article figure {
+  margin: 0 1.6666666667rem;
+}
+article figcaption {
+  opacity: 0.72;
+}
+article a {
+  color: var(--a-colour);
+}
+article em {
+  font-style: normal;
+  -webkit-text-emphasis: "▪";
+}
+article em.latin, article em .latin {
+  font-style: italic;
+  -webkit-text-emphasis: none;
+}
+article ul {
+  list-style-type: disc;
+}
+article ul li::marker {
+  color: var(--a-colour);
+}
+article ol {
+  list-style-type: trad-chinese-informal;
+  list-style-position: inside;
+}
+article ol li {
+  margin: 0;
+  text-indent: 1rem;
+  text-align: justify;
+}
 
-@media screen and (max-height: 880px) {
+@media screen and (max-height: 806.6666666667px) {
   article {
     height: 31rem;
   }
 }
-@media screen and (max-height: 856px) {
+@media screen and (max-height: 784.6666666667px) {
   article {
     height: 30rem;
   }
 }
-@media screen and (max-height: 832px) {
-  article {
-    height: 29rem;
-  }
-}
-@media screen and (max-height: 808px) {
-  article {
-    height: 28rem;
-  }
-}
-@media screen and (max-height: 770px) {
+@media screen and (max-height: 753.3333333333px) {
   html, body {
-    font-size: 21px;
+    font-size: 20px;
+  }
+  article img {
+    max-width: 500px;
+  }
+  article figure {
+    margin: 0 33.3333333333px;
   }
   article {
     height: 32rem;
   }
 }
-@media screen and (max-height: 770px) {
+@media screen and (max-height: 733.3333333333px) {
   article {
     height: 31rem;
   }
 }
-@media screen and (max-height: 749px) {
+@media screen and (max-height: 713.3333333333px) {
   article {
     height: 30rem;
   }
 }
-@media screen and (max-height: 728px) {
+@media screen and (max-height: 693.3333333333px) {
   article {
     height: 29rem;
   }
 }
-@media screen and (max-height: 707px) {
-  article {
-    height: 28rem;
-  }
-}
-@media screen and (max-height: 672px) {
+@media screen and (max-height: 664px) {
   html, body {
     font-size: 18px;
+  }
+  article img {
+    max-width: 450px;
+  }
+  article figure {
+    margin: 0 30px;
   }
   article {
     height: 32rem;
@@ -434,6 +579,12 @@ article p:not(:first-child) {
 @media screen and (max-height: 596.6666666667px) {
   html, body {
     font-size: 16px;
+  }
+  article img {
+    max-width: 400px;
+  }
+  article figure {
+    margin: 0 26.6666666667px;
   }
   article {
     height: 32rem;
@@ -459,52 +610,86 @@ article p:not(:first-child) {
     height: 28rem;
   }
 }
-@media screen and (max-height: 522.6666666667px) {
+@media screen and (max-height: 513.3333333333px) {
+  html, body {
+    font-size: 14px;
+  }
+  article img {
+    max-width: 350px;
+  }
+  article figure {
+    margin: 0 23.3333333333px;
+  }
+  article {
+    height: 32rem;
+  }
+}
+@media screen and (max-height: 513.3333333333px) {
+  article {
+    height: 31rem;
+  }
+}
+@media screen and (max-height: 499.3333333333px) {
+  article {
+    height: 30rem;
+  }
+}
+@media screen and (max-height: 485.3333333333px) {
+  article {
+    height: 29rem;
+  }
+}
+@media screen and (max-height: 471.3333333333px) {
+  article {
+    height: 28rem;
+  }
+}
+@media screen and (max-height: 457.3333333333px) {
   article {
     height: 27rem;
   }
 }
-@media screen and (max-height: 506.6666666667px) {
+@media screen and (max-height: 443.3333333333px) {
   article {
     height: 26rem;
   }
 }
-@media screen and (max-height: 490.6666666667px) {
+@media screen and (max-height: 429.3333333333px) {
   article {
     height: 25rem;
   }
 }
-@media screen and (max-height: 474.6666666667px) {
+@media screen and (max-height: 415.3333333333px) {
   article {
     height: 24rem;
   }
 }
-@media screen and (max-height: 458.6666666667px) {
+@media screen and (max-height: 401.3333333333px) {
   article {
     height: 23rem;
   }
 }
-@media screen and (max-height: 442.6666666667px) {
+@media screen and (max-height: 387.3333333333px) {
   article {
     height: 22rem;
   }
 }
-@media screen and (max-height: 426.6666666667px) {
+@media screen and (max-height: 373.3333333333px) {
   article {
     height: 21rem;
   }
 }
-@media screen and (max-height: 410.6666666667px) {
+@media screen and (max-height: 359.3333333333px) {
   article {
     height: 20rem;
   }
 }
-@media screen and (max-height: 394.6666666667px) {
+@media screen and (max-height: 345.3333333333px) {
   article {
     height: 19rem;
   }
 }
-@media screen and (max-height: 378.6666666667px) {
+@media screen and (max-height: 331.3333333333px) {
   article {
     height: 18rem;
   }

@@ -1,0 +1,33 @@
+{
+  "name": "tategaki-netnewswire",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "sass-watch": "sass --no-source-map -w stylesheet.sass ../Tategaki.nnwtheme/stylesheet.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toto-minai/Tategaki-NetNewsWire.git"
+  },
+  "type": "module",
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/toto-minai/Tategaki-NetNewsWire/issues"
+  },
+  "homepage": "https://github.com/toto-minai/Tategaki-NetNewsWire#readme",
+  "dependencies": {
+    "tategaki": "^1.4.1"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-terser": "^0.3.0",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "rollup": "^3.9.1",
+    "tslib": "^2.4.1",
+    "typescript": "^4.9.4"
+  }
+}

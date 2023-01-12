@@ -456,11 +456,15 @@ article {
   text-align: justify;
 }
 article .heading {
-  margin-block-end: 5rem;
+  margin-block-end: 3.3333333333rem;
 }
 article h1, article h2, article h3 {
   font-family: Hak, sans-serif;
   font-weight: bold;
+}
+article h1 .latin, article h2 .latin, article h3 .latin {
+  font-family: Futura, sans-serif;
+  font-weight: 500;
 }
 article h2, article h3 {
   margin-block-start: 1.6666666667rem;

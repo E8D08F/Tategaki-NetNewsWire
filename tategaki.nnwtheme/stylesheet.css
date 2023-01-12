@@ -336,3 +336,176 @@ video {
 [hidden] {
   display: none;
 }
+
+html, body {
+  writing-mode: vertical-rl;
+  font-size: 24px;
+}
+
+body {
+  font-family: Charter, "PingFang TC", serif;
+  font-feature-settings: "vhal";
+  line-height: 1.6666666667;
+}
+
+article {
+  height: 32rem;
+  margin: 2.3333333333rem 2rem;
+  text-align: justify;
+}
+article .heading {
+  margin-block-end: 5rem;
+}
+article p:not(:first-child) {
+  text-indent: 1rem;
+}
+
+@media screen and (max-height: 880px) {
+  article {
+    height: 31rem;
+  }
+}
+@media screen and (max-height: 856px) {
+  article {
+    height: 30rem;
+  }
+}
+@media screen and (max-height: 832px) {
+  article {
+    height: 29rem;
+  }
+}
+@media screen and (max-height: 808px) {
+  article {
+    height: 28rem;
+  }
+}
+@media screen and (max-height: 770px) {
+  html, body {
+    font-size: 21px;
+  }
+  article {
+    height: 32rem;
+  }
+}
+@media screen and (max-height: 770px) {
+  article {
+    height: 31rem;
+  }
+}
+@media screen and (max-height: 749px) {
+  article {
+    height: 30rem;
+  }
+}
+@media screen and (max-height: 728px) {
+  article {
+    height: 29rem;
+  }
+}
+@media screen and (max-height: 707px) {
+  article {
+    height: 28rem;
+  }
+}
+@media screen and (max-height: 672px) {
+  html, body {
+    font-size: 18px;
+  }
+  article {
+    height: 32rem;
+  }
+}
+@media screen and (max-height: 660px) {
+  article {
+    height: 31rem;
+  }
+}
+@media screen and (max-height: 642px) {
+  article {
+    height: 30rem;
+  }
+}
+@media screen and (max-height: 624px) {
+  article {
+    height: 29rem;
+  }
+}
+@media screen and (max-height: 596.6666666667px) {
+  html, body {
+    font-size: 16px;
+  }
+  article {
+    height: 32rem;
+  }
+}
+@media screen and (max-height: 586.6666666667px) {
+  article {
+    height: 31rem;
+  }
+}
+@media screen and (max-height: 570.6666666667px) {
+  article {
+    height: 30rem;
+  }
+}
+@media screen and (max-height: 554.6666666667px) {
+  article {
+    height: 29rem;
+  }
+}
+@media screen and (max-height: 538.6666666667px) {
+  article {
+    height: 28rem;
+  }
+}
+@media screen and (max-height: 522.6666666667px) {
+  article {
+    height: 27rem;
+  }
+}
+@media screen and (max-height: 506.6666666667px) {
+  article {
+    height: 26rem;
+  }
+}
+@media screen and (max-height: 490.6666666667px) {
+  article {
+    height: 25rem;
+  }
+}
+@media screen and (max-height: 474.6666666667px) {
+  article {
+    height: 24rem;
+  }
+}
+@media screen and (max-height: 458.6666666667px) {
+  article {
+    height: 23rem;
+  }
+}
+@media screen and (max-height: 442.6666666667px) {
+  article {
+    height: 22rem;
+  }
+}
+@media screen and (max-height: 426.6666666667px) {
+  article {
+    height: 21rem;
+  }
+}
+@media screen and (max-height: 410.6666666667px) {
+  article {
+    height: 20rem;
+  }
+}
+@media screen and (max-height: 394.6666666667px) {
+  article {
+    height: 19rem;
+  }
+}
+@media screen and (max-height: 378.6666666667px) {
+  article {
+    height: 18rem;
+  }
+}

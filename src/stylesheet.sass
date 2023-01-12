@@ -1,1 +1,71 @@
+@use "sass:math"
 @import 'preflight'
+
+$fs: 24px
+$lcct: 32
+$mplr: 1 + calc(2/3)
+
+$lgth: $lcct * 1rem
+$lmch: $mplr * 1rem
+$lacs: (2 * $mplr - 1) * 1rem
+$lsid: ($mplr - 1) * 0.5rem
+
+html, body
+  writing-mode: vertical-rl
+  font-size: $fs
+
+body
+  font-family: Charter, 'PingFang TC', serif
+  font-feature-settings: 'vhal'
+  line-height: $mplr
+
+article
+  height: $lgth
+  margin: $lacs $lacs - $lsid
+
+  text-align: justify
+
+  .heading
+    margin-block-end: 3 * $lmch
+  
+  p:not(:first-child)
+    text-indent: 1rem
+  
+
+// Style text frame
+@mixin text_frame($_lcct, $should_set_fs: false)
+  @if $should_set_fs 
+    html, body
+      font-size: $fs
+  article
+    height: $_lcct * 1rem
+
+@function corresponding_screen_height($text_frame_height)
+  // Should return `px`
+  @return $text_frame_height + (2 * $mplr - 1) * 2 * $fs
+
+// Create `max-height` breakpoints
+$_last_breakpoint: null
+@mixin screen_breakpoints($start_lcct, $decrease, $fs)
+  $fs: $fs !global
+  @for $i from 0 through $decrease
+    @if $i == 0
+      @if $_last_breakpoint != null
+        @media screen and (max-height: corresponding_screen_height($_last_breakpoint))
+          @include text_frame($start_lcct - $i, true)
+    @else
+      @media screen and (max-height: corresponding_screen_height(($start_lcct - $i + 1) * $fs))
+        @include text_frame($start_lcct - $i)
+      @if $i == $decrease
+        $_last_breakpoint: ($start_lcct - $i) * $fs !global
+
+@mixin lgth_step_down($ideal_lcct, $min_lcct, $sizes...)
+  $sizes: append($sizes, 0px)
+  @for $i from 1 to length($sizes)
+    $greedy_step: math.floor(math.div((nth($sizes, $i) - nth($sizes, $i + 1)) * $ideal_lcct, nth($sizes, $i)))
+    $step: min($greedy_step, $ideal_lcct - $min_lcct)
+    @include screen_breakpoints($ideal_lcct, $step, nth($sizes, $i))
+    
+
+@include lgth_step_down($lcct, 18, $fs, 21px, 18px, 16px)
+

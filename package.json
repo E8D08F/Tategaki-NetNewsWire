@@ -6,7 +6,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "sass-watch": "sass --no-source-map -w stylesheet.sass ../Tategaki.nnwtheme/stylesheet.css"
+    "sass-watch": "sass --no-source-map -w src/stylesheet.sass Tategaki.nnwtheme/stylesheet.css"
   },
   "repository": {
     "type": "git",

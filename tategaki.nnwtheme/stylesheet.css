@@ -475,6 +475,9 @@ article p:not(:first-of-type) {
 article blockquote {
   font-family: Dash, PcM, PcS, Charter, Kaai, cursive;
 }
+article blockquote p {
+  text-indent: 1rem;
+}
 article blockquote .kana {
   font-family: YuKyokasho, cursive;
 }

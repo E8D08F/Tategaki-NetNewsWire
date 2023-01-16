@@ -10,6 +10,8 @@ and their conterparts, `stylesheet.css` and `index.js` should be generated later
 
 - Fonts in use:
     - Ming: Hiragino Mincho ProN;
+        - Serif: Charter;
     - Hak: PingFang TC;
-    - Kaai: Kaiti TC, Kaiti SC;
+        - Sans-serif: Futura;
+    - Kaai: Kaiti TC, Kaiti SC, YuKyokasho;
     - Punctuations: LiSong Pro (`U+2014–2015`), Apple LiSung, Hiragino Mincho ProN.

@@ -34,6 +34,11 @@ body
   font-family: Dash, PcM, PcS, Palatino, Ming, serif
   line-height: $mplr
 
+@supports (overscroll-behavior: contain)
+  main
+    mask: linear-gradient(to right, rgba(0,0,0,0.12), black 0.27rem) left, linear-gradient(to left, rgba(0,0,0,0.12), black 0.27rem) right
+    -webkit-mask-composite: source-in
+
 main
   position: fixed
   top: 0
@@ -42,9 +47,6 @@ main
 
   overflow-x: auto
   overscroll-behavior: contain
-
-  mask: linear-gradient(to right, rgba(0,0,0,0.12), black 0.27rem) left, linear-gradient(to left, rgba(0,0,0,0.12), black 0.27rem) right
-  -webkit-mask-composite: source-in
 
 .latin
   position: relative
